@@ -65,15 +65,23 @@ Let X be an infinite graph of bounded degree; e.g., the Cayley graph of a free p
     Their assignments were reasoned with naturality. *)
 
 (** An empty structure. *)
-module type VOID = sig end
-
-(** A structure with a possible 'ker' field of type 'void'. *)
-module type UNIT = sig
-  type t = { ker : VOID.t option }
+module type VOID : sig
+  type t
+end = sig
+  type t = { ker : t option }
 end
 
-module type BOOL = sig
-  type t = { src : VOID.t option; tgt : UNIT.t }
+(** A structure with a possible 'ker' field of type 'void'. *)
+module type UNIT : sig
+  type t
+end = sig
+  type t = { hole : t option; ker : VOID.t }
+end
+
+module type BOOL : sig
+  type t
+end = sig
+  type t = { dom : VOID.t option; im : UNIT.t }
 end
 
 module type NODE = sig
@@ -256,10 +264,12 @@ end
 (** (Co)Products from redprl/kado *)
 
 (** Algebra from redprl/algae{ff,tt} *)
+
 ```
 
 ```OCaml
 (** path:Types.ml *)
+
 ```
 
 ```OCaml
