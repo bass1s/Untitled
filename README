@@ -1,5 +1,5 @@
 
-a dynamic Typescript SVG 2d 'repo-visualizer'-like IDE-like terminal structures for building languages nd systems
+a dynamic OCaml SVG 2d 'repo-visualizer'-like IDE-like terminal structures for building computational systems capable of transformation of communication.
 From this terminal we (me and ma(thematics)chine) control all underlying directory, documentation, code generation, and data structures and vectors.
 Generates mathematically (categorically) accurate dynamic framework for computational simplicial homotopy type theory based on work of RedPRL.
 Computational kernels are implicitly based on linearizations/localizations of elliptic curves, globally orchestrated by automata systems (e.g. finite state machines, pushdown automata, etc.).
@@ -9,19 +9,19 @@ training routines will contain variety of (partial) (pre-)computations of charac
 networks were appropriately glued via functors of natural transformations taking entire system under a common denominator of an 'interpreter'(actor).
 Apollonian gasket used as tensor of lens spaces. we (shall) prove (oneday) that we have constructed an instance of an infinite logos
 
-```mdx
+[TOCITE]:(
 Ramanujan graphs and complexes have found a surprising application to the theory of quantum computation. In classical computation, one
-decomposes any function into basic logical gates such as `xor, and, not`. In quantum computation, the classical bits are replaced
-by qubits, which are vectors in projective Hilbert space `mathbb{C}P^{n}`, and the logical gates are **all **the elements of the projective
-unitary group `G=PU(n)`. In the real world, one must implement some finite set of these gates, and use them to approximate the others.
-Denoting by `S^{(\ell)}` the set of `\ell`-wise products of elements in `S\subset G`, we say that `S` is **universal **if `\left\langle S\right\rangle =\cup_{\ell\geq0}S^{(\ell)}`
-is dense in `G` (with respect to the standard bi-invariant metric `d^{2}\left(A,B\right)=1-\frac{|\mathrm{trace}(A^{*}B)|}{2}`). This
-means that any gate can be approximated with arbitrary precision as a product of elements of `S`. The notion of Golden Gates is a much
-stronger one, loosely requiring the following (see `cite{Parzanchevski2018SuperGoldenGates,Evra2018RamanujancomplexesGolden}`
+decomposes any function into basic logical gates such as $xor$, $and$, n$ot$. In quantum computation, the classical bits are replaced
+by qubits, which are vectors in projective Hilbert space $\mathbb{C}P^{n}$, and the logical gates are all the elements of the projective
+unitary group $G=PU(n)$. In the real world, one must implement some finite set of these gates, and use them to approximate the others.
+Denoting by $S^{\ell}$ the set of $\ell$-wise products of elements in $S\subset G$, we say that $S$ is universal if $\left\langle S\right\rangle =\cup_{\ell\geq0}S^{\ell}$
+is dense in $G$ (with respect to the standard bi-invariant metric $d^{2}\left(A,B\right)=1-\frac{|\mathrm{trace}(A^{*}B)|}{2}$). This
+means that any gate can be approximated with arbitrary precision as a product of elements of $S$. The notion of Golden Gates is a much
+stronger one, loosely requiring the following (see \cite{Parzanchevski2018SuperGoldenGates,Evra2018RamanujancomplexesGolden}
 for precise definitions):
-1. The covering rate of `G` by `\left\langle S\right\rangle ` is (almost) optimal. Namely, for every `\ell` the set `S^{(\ell)}` distributes in `G` as a perfect sphere packing (or randomly placed points) would, up to a negligible factor.
-2. Approximation: given `A\in PU(n)` and `\varepsilon>0`, there is an efficient algorithm to find some `A'\in B_{\varepsilon}(A)` (the `\varepsilon`-ball around `A`) such that `A'\in S^{(\ell)}` with `\ell` (almost) minimal.
-3. Compiling: given `A\in\left\langle S\right\rangle ` as a matrix, there is an efficient algorithm to write `A` as a word in `S` of the smallest possible length.
+1. The covering rate of $G$ by $\left\langle S\right\rangle $ is (almost) optimal. Namely, for every $\ell$ the set $S^{(\ell)}$ distributes in $G$ as a perfect sphere packing (or randomly placed points) would, up to a negligible factor.
+2. Approximation: given $A\in PU(n)$ and $\varepsilon>0$, there is an efficient algorithm to find some $A'\in B_{\varepsilon}(A)$ (the $\varepsilon$-ball around $A$) such that $A'\in S^{(\ell)}$ with $\ell$ (almost) minimal.
+3. Compiling: given $A\in\left\langle S\right\rangle$ as a matrix, there is an efficient algorithm to write $A$ as a word in $S$ of the smallest possible length.
 
 To see the connection between covering and spectral expansion, denote by $T_{S}$ the $S$-adjacency operator on $L^{2}\left(G\right)$,
 namely, $(T_{S}f)(g)=\sum_{s\in S}f(sg)$. Clearly, $T_{S}\left(\one\right)=|S|\cdot\one$, and we denote $\lambda_{S}=\left\Vert T_{S}\big|_{\one^{\bot}}\right\Vert $,
@@ -46,87 +46,173 @@ use the conjecture for representations of level two and arbitrary weight. To see
 are optimally covering (compared with random ones), one needs to bound $\lambda_{S^{(\ell)}}$ for general $\ell$; we refer the reader to
 \cite{Parzanchevski2018SuperGoldenGates} for a full account, which addresses also the approximation problem for these gates by the Ross-Selinger
 algorithm \cite{ross2015optimal}.
-```
+)
 
-```utf8
+[TOCITE]:(
 X-Ramanujan Graphs
 Sidhanth Mohanty, Ryan O'Donne
 Let X be an infinite graph of bounded degree; e.g., the Cayley graph of a free product of finite groups. If G is a finite graph covered by X, it is said to be X-Ramanujan if its second-largest eigenvalue λ2(G) is at most the spectral radius ρ(X) of X, and more generally k-quasi-X-Ramanujan if λk(G) is at most ρ(X). In case X is the infinite Δ-regular tree, this reduces to the well known notion of a finite Δ-regular graph being Ramanujan. Inspired by the Interlacing Polynomials method of Marcus, Spielman, and Srivastava, we show the existence of infinitely many k-quasi-X-Ramanujan graphs for a variety of infinite X. In particular, X need not be a tree; our analysis is applicable whenever X is what we call an additive product graph. This additive product is a new construction of an infinite graph 𝖠𝖽𝖽𝖯𝗋𝗈𝖽(A1,…,Ac) from finite 'atom' graphs A1,…,Ac over a common vertex set. It generalizes the notion of the free product graph A1∗⋯∗Ac when the atoms Aj are vertex-transitive, and it generalizes the notion of the universal covering tree when the atoms Aj are single-edge graphs. Key to our analysis is a new graph polynomial α(A1,…,Ac;x) that we call the additive characteristic polynomial. It generalizes the well known matching polynomial μ(G;x) in case the atoms Aj are the single edges of G, and it generalizes the r-characteristic polynomial introduced in [Ravichandran'16, Leake-Ravichandran'18]. We show that α(A1,…,Ac;x) is real-rooted, and all of its roots have magnitude at most ρ(𝖠𝖽𝖽𝖯𝗋𝗈𝖽(A1,…,Ac)). This last fact is proven by generalizing Godsil's notion of treelike walks on a graph G to a notion of freelike walks on a collection of atoms A1,…,Ac.
+)
+
+[TOCITE]:(https://www.wildegg.com/youtube-universal-hyperbolic-geometry.html)
+
+```OCaml
+(** path:src/types.mli *)
+(** Mathematical naturality of Cayley Transformations to provide our structure with the mechanics.
+    Furthermore, construction ensures that all postprocessed and indexed data structure is locally linear.
+    ie. representable and computable by simple matrices and operations of thereof.
+    Duals and potential covariants of our planar graph are trees and their maps.
+    Their assignments were reasoned with naturality. *)
+
+module type SIG = sig
+  type t
+  val id : t
+  val ( % ) : t -> t -> t
+end
+
+(** An empty structure. *)
+module VOID : sig end
+
+(** A structure with a possible 'ker' field of type 'void'. *)
+module UNIT : sig
+  type t = { ker : VOID.t option }
+end
+
+module BOOL : sig
+  type t = { src : VOID.t option; tgt : UNIT.t }
+end
+
+module NODE : sig
+  type t = {
+    hole : t option;
+    i0 : int option;
+    i1 : int option;
+    id : string option;
+    orient : BOOL.t option;
+  }
+end
+
+module THE : sig
+  type t = {
+    hole : NODE.t option;
+    loop : int option;
+    comp : string option;
+    orient : BOOL.t option;
+  }
+end
+
+module CIRCLE : sig
+  type t = {
+    radius : int option;
+    center : NODE.t;
+    radian : THE.t;
+    id : string option;
+    orient : BOOL.t option;
+    parent : CIRCLE.t option;
+  }
+end
+
+module DISK : sig
+  type t = {
+    radius : int option;;
+    center : NODE.t;
+    radian : THE.t;
+    comp : string option;
+    orient : BOOL.t option;
+    parent : DISK.t option;
+  }
+end
+
+
+
+module TREE : sig
+  type t = {
+    nodes : NODE.t list option;
+    edges : THE.t list option;
+    id : string option;
+    orient : BOOL.t option;
+  }
+end
+
+module GRAPH : sig
+  type t = {
+    edges : CIRCLE.t list option;
+    nodes : DISK.t list option;
+    comp : string option;
+    orient : BOOL.t option;
+  }
+end
 ```
 
-```typescript
-// path: src/types.ts
-// Let (mathematical) naturality of Cayley Transformations to provide our structure with the mechanics
-// furthermore, construction ensures that all postprocessed and indexed data structure is locally linear. ie. representable and computable by simple matrices and operations of thereof
-// Duals and potential covariants of our planar graph are trees and their maps. Their assignments were reasoned with naturality.
+```OCaml
+(** path: src/functors.mli *)
 
+module VOID : sig
+  type t
+  val mk : unit -> t
+  val kl : 
+end
 
-export interface IVoid {}
+(** A functor for constructing a 'unit' type. *)
+module UNIT : sig
+  type t
+  val mk : ?ker:VOID.t -> unit -> t
+end
 
-export interface IUnit {
-    ker?: IVoid;
-}
-export interface IBool {
-    false?: IVoid;
-    true: IUnit;
-}
-// Note, INFINITY has to be considered for each field, this provides an orientation vector
-export interface INode {
-    hole(value: ITheta)?: INode;
-    u0?: number;
-    u1?: number;
-    id?: string;
-    orient?: IBool;
-}
-export interface ITheta {
-    hole(value: INode)?: ITheta;
-    loop?: number;
-    computation?: string;
-    orient?: IBool;
-}
-// Note, ILine = ICircle with center @ 2INFINITY
-export interface ICircle {
-    radius: IUnit;
-    center: INode;
-    radian: ITheta;
-    id?: string;
-    orient?: IBool;
-    parent(value: IDisk)?: ICircle;
-}
-export interface IDisk {
-    radius: IUnit;
-    center: INode;
-    radian: ITheta;
-    computation?: string;
-    orient?: IBool;
-    parent(value: ICircle)?: IDisk;
-}
-// study redprl/cooltt and redprl/* to understand the following
+(** A functor for constructing a 'bool' type. *)
+module BOOL : sig
+  type t
+  val mk : ?src:VOID.t -> ?tgt:UNIT.t -> unit -> t
+end
 
-export interface ITree {
-    nodes?: INode[];
-    edges?: ITheta[];
-    id?: string;
-    orient?: IBool;
-}
-export interface IGraph {
-    edges?: ICircle[];
-    nodes?: IDisk[];
-    computation?: string;
-    orient?: IBool;
-}
+(** A functor for constructing a 'node' type. *)
+module NODE : sig
+  type t
+  val mk : ?hole:NODE.t -> ?i0:int -> ?i1:int -> ?id:string -> ?orient:BOOL.t -> unit -> t
+end
+
+(** A functor for constructing a 'the' type. *)
+module THE : sig
+  type t
+  val mk : ?hole:NODE.t -> ?loop:int -> ?comp:string -> ?orient:BOOL.t -> unit -> t
+end
+
+(** A functor for constructing a 'circle' type. *)
+module CIRCLE : sig
+  type t
+  val mk : ?radius:int -> ?center:NODE.t -> ?radian:THE.t -> ?id:string -> ?orient:BOOL.t -> ?parent:CIRCLE.t -> unit -> t
+end
+
+(** A functor for constructing a 'disk' type. *)
+module DISK : sig
+  type t
+  val mk : ?radius:int -> ?center:NODE.t -> ?radian:THE.t -> ?comp:string -> ?orient:BOOL.t -> ?parent:DISK.t -> unit -> t
+end
+
+(** A functor for constructing a 'tree' type. *)
+module TREE : sig
+  type t
+  val mk : ?nodes:NODE.t list -> ?edges:THE.t list -> ?id:string -> ?orient:BOOL.t -> unit -> t
+end
+
+(** A functor for constructing a 'graph' type. *)
+module GRAPH : sig
+  type t
+  val mk : ?edges:CIRCLE.t list -> ?nodes:DISK.t list -> ?comp:string -> ?orient:BOOL.t -> unit -> t
+end
 ```
 
-```typescript
-// path: src/constructors.ts
+```OCaml
+(** path: src/constructors.ml *)
 
-export const IVoid = ({});
-export const IUnit = (value: IVoid): IUnit => ({});
-export const IBool = (value: boolean): IBool => (value ? { true: IUnit() } : { false: IUnit() });
-export const INode = (value: ITheta): INode => ({ hole: (value: ITheta): INode => INode(value) });
-export const ITheta = (value: INode): ITheta => ({ hole: (value: INode): ITheta => ITheta(value) });
-export const ICircle = (radius: IUnit, center: INode, radian: ITheta): ICircle => ({ radius, center, radian });
-export const IDisk = (radius: IUnit, center: INode, radian: ITheta): IDisk => ({ radius, center, radian });
+(** A module for constructing a 'void' type. *)
+module VOID = struct
+  let mk () = ()
+end
+
+(** A module for constructing a 'unit' type. *)
+module UNIT = struct
+  let mk ?(ker =
 ```
 
 ```typescript
