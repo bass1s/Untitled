@@ -1,27 +1,30 @@
+(** Universal Hyperbolic Geometry (UHG) is a dramatically new approach to the classical subject initiated by Gauss, Lobachevsky and Bolyai. 
+    While classical hyperbolic geometry is set in the interior of the unit disk, or the upper half plane, 
+    UHG involves the entire projective plane, together with a distinguished conic. In this sense it is parallel to Cayley Klein geometry, 
+    which calls the distinguished conic the absolute.
+    But UHG introduces metrical structure in a purely algebraic way, without use of transcendental 
+    functions such as the log or sin, and exactly parallel to rational trigonometry in the plane. 
+    That means that projective notions of quadrance between points and spread between lines are the main measurements. 
+    Everything becomes much simpler, more beautiful and more general, extending to arbitrary fields (including finite fields!) and also to other quadratic forms.
+    And there are many new theorems and insights. Welcome to a new hyperbolic world! *)
 (** Mathematical naturality of Cayley Transformations to provide our structure with the mechanics.
     Furthermore, construction ensures that all postprocessed and indexed data structure is locally linear.
     ie. representable and computable by simple matrices and operations of thereof.
-    Duals and potential covariants of our planar graph are trees and their maps.
-    Their assignments were reasoned with naturality. *)
+    Duals and potential covariants of our planar graph are trees and endomaps.
+    Their assignments are reasoned using universality/naturality. *)
 
 (** An empty structure. *)
-module type VOID : sig
-  type t
-end = sig
-  type t = { ker : t option }
-end
-
-(** A structure with a possible 'ker' field of type 'void'. *)
-module type UNIT : sig
-  type t
-end = sig
+module type VOID = sig
   type t = { hole : t option; ker : VOID.t }
 end
 
-module type BOOL : sig
-  type t
-end = sig
-  type t = { dom : VOID.t option; im : UNIT.t }
+(** A structure with a 'ker' field of type 'void' and a possible structure. *)
+module type UNIT = sig
+  type t = { hole : t option; ker : VOID.t }
+end
+
+module type BOOL = sig
+  type t = { source : UNIT.t; sink : VOID.t option }
 end
 
 module type NODE = sig
@@ -93,7 +96,7 @@ module type SIG = sig
   val ( % ) : t -> t -> t
 end
 
-module type SIG2 = sig
+module type TYPE = sig
   type 'a t
   val id : 'a t
   val ( % ) : 'a t -> 'a t -> 'a t
@@ -110,84 +113,6 @@ end
 module type FUNCTOR = sig
   type 'a t
   val ap : ('a -> 'b) -> 'a t -> 'b t
-end
-
-
-module type MONAD = sig
-  type t
-  type hom
-  val comp : hom -> hom -> hom
-  val id : obj -> hom
-end
-
-module type TYPE = sig
-  type t
-  type hom
-  val comp : hom -> hom -> hom
-  val id : obj -> hom
-end
-
-module type SET = sig
-  type t
-  type hom
-  val comp : hom -> hom -> hom
-  val id : obj -> hom
-end
-
-module type GROUP = sig
-  type t
-  type hom
-  val comp : hom -> hom -> hom
-  val id : obj -> hom
-end
-
-module type RING = sig
-  type t
-  type hom
-  val comp : hom -> hom -> hom
-  val id : obj -> hom
-end
-
-module type FIELD = sig
-  type t
-  type hom
-  val comp : hom -> hom -> hom
-  val id : obj -> hom
-end
-
-module type VECTOR = sig
-  type t
-  type hom
-  val comp : hom -> hom -> hom
-  val id : obj -> hom
-end
-
-module type MODULE = sig
-  type t
-  type hom
-  val comp : hom -> hom -> hom
-  val id : obj -> hom
-end
-
-module type BIMODULE = sig
-  type t
-  type hom
-  val comp : hom -> hom -> hom
-  val id : obj -> hom
-end
-
-module type RIGID = sig
-  type t
-  type hom
-  val comp : hom -> hom -> hom
-  val id : obj -> hom
-end
-
-module type SEMIRIGID = sig
-  type t
-  type hom
-  val comp : hom -> hom -> hom
-  val id : obj -> hom
 end
 
 (** pipeline with redprl/{asai,bantorra} *)

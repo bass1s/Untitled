@@ -54,34 +54,34 @@ Sidhanth Mohanty, Ryan O'Donne
 Let X be an infinite graph of bounded degree; e.g., the Cayley graph of a free product of finite groups. If G is a finite graph covered by X, it is said to be X-Ramanujan if its second-largest eigenvalue λ2(G) is at most the spectral radius ρ(X) of X, and more generally k-quasi-X-Ramanujan if λk(G) is at most ρ(X). In case X is the infinite Δ-regular tree, this reduces to the well known notion of a finite Δ-regular graph being Ramanujan. Inspired by the Interlacing Polynomials method of Marcus, Spielman, and Srivastava, we show the existence of infinitely many k-quasi-X-Ramanujan graphs for a variety of infinite X. In particular, X need not be a tree; our analysis is applicable whenever X is what we call an additive product graph. This additive product is a new construction of an infinite graph 𝖠𝖽𝖽𝖯𝗋𝗈𝖽(A1,…,Ac) from finite 'atom' graphs A1,…,Ac over a common vertex set. It generalizes the notion of the free product graph A1∗⋯∗Ac when the atoms Aj are vertex-transitive, and it generalizes the notion of the universal covering tree when the atoms Aj are single-edge graphs. Key to our analysis is a new graph polynomial α(A1,…,Ac;x) that we call the additive characteristic polynomial. It generalizes the well known matching polynomial μ(G;x) in case the atoms Aj are the single edges of G, and it generalizes the r-characteristic polynomial introduced in [Ravichandran'16, Leake-Ravichandran'18]. We show that α(A1,…,Ac;x) is real-rooted, and all of its roots have magnitude at most ρ(𝖠𝖽𝖽𝖯𝗋𝗈𝖽(A1,…,Ac)). This last fact is proven by generalizing Godsil's notion of treelike walks on a graph G to a notion of freelike walks on a collection of atoms A1,…,Ac.
 )
 
-[TOCITE]:(https://www.wildegg.com/youtube-universal-hyperbolic-geometry.html)
+[TOCITE]:(https://www.wildegg.com/youtube-universal-hyperbolic-geometry.html
+Universal Hyperbolic Geometry (UHG) is a dramatically new approach to the classical subject initiated by Gauss, Lobachevsky and Bolyai. While classical hyperbolic geometry is set in the interior of the unit disk, or the upper half plane, UHG involves the entire projective plane, together with a distinguished conic. In this sense it is parallel to Cayley Klein geometry, which calls the distinguished conic the absolute.
+
+But UHG introduces metrical structure in a purely algebraic way, without use of transcendental functions such as the log or sin, and exactly parallel to rational trigonometry in the plane. That means that projective notions of quadrance between points and spread between lines are the main measurements. Everything becomes much simpler, more beautiful and more general, extending to arbitrary fields (including finite fields!) and also to other quadratic forms.
+
+And there are many new theorems and insights. Welcome to a new hyperbolic world!
+)
 
 ```OCaml
-(** path:Types.mli *)
+(** path:Types.ml *)
 (** Mathematical naturality of Cayley Transformations to provide our structure with the mechanics.
     Furthermore, construction ensures that all postprocessed and indexed data structure is locally linear.
     ie. representable and computable by simple matrices and operations of thereof.
-    Duals and potential covariants of our planar graph are trees and their maps.
-    Their assignments were reasoned with naturality. *)
+    Duals and potential covariants of our planar graph are trees and endomaps.
+    Their assignments are reasoned using universality/naturality. *)
 
 (** An empty structure. *)
-module type VOID : sig
-  type t
-end = sig
-  type t = { ker : t option }
-end
-
-(** A structure with a possible 'ker' field of type 'void'. *)
-module type UNIT : sig
-  type t
-end = sig
+module type VOID = sig
   type t = { hole : t option; ker : VOID.t }
 end
 
-module type BOOL : sig
-  type t
-end = sig
-  type t = { dom : VOID.t option; im : UNIT.t }
+(** A structure with a 'ker' field of type 'void' and a possible structure. *)
+module type UNIT = sig
+  type t = { hole : t option; ker : VOID.t }
+end
+
+module type BOOL = sig
+  type t = { source : UNIT.t; sink : VOID.t option }
 end
 
 module type NODE = sig
@@ -153,7 +153,7 @@ module type SIG = sig
   val ( % ) : t -> t -> t
 end
 
-module type SIG2 = sig
+module type TYPE = sig
   type 'a t
   val id : 'a t
   val ( % ) : 'a t -> 'a t -> 'a t
@@ -170,84 +170,6 @@ end
 module type FUNCTOR = sig
   type 'a t
   val ap : ('a -> 'b) -> 'a t -> 'b t
-end
-
-
-module type MONAD = sig
-  type t
-  type hom
-  val comp : hom -> hom -> hom
-  val id : obj -> hom
-end
-
-module type TYPE = sig
-  type t
-  type hom
-  val comp : hom -> hom -> hom
-  val id : obj -> hom
-end
-
-module type SET = sig
-  type t
-  type hom
-  val comp : hom -> hom -> hom
-  val id : obj -> hom
-end
-
-module type GROUP = sig
-  type t
-  type hom
-  val comp : hom -> hom -> hom
-  val id : obj -> hom
-end
-
-module type RING = sig
-  type t
-  type hom
-  val comp : hom -> hom -> hom
-  val id : obj -> hom
-end
-
-module type FIELD = sig
-  type t
-  type hom
-  val comp : hom -> hom -> hom
-  val id : obj -> hom
-end
-
-module type VECTOR = sig
-  type t
-  type hom
-  val comp : hom -> hom -> hom
-  val id : obj -> hom
-end
-
-module type MODULE = sig
-  type t
-  type hom
-  val comp : hom -> hom -> hom
-  val id : obj -> hom
-end
-
-module type BIMODULE = sig
-  type t
-  type hom
-  val comp : hom -> hom -> hom
-  val id : obj -> hom
-end
-
-module type RIGID = sig
-  type t
-  type hom
-  val comp : hom -> hom -> hom
-  val id : obj -> hom
-end
-
-module type SEMIRIGID = sig
-  type t
-  type hom
-  val comp : hom -> hom -> hom
-  val id : obj -> hom
 end
 
 (** pipeline with redprl/{asai,bantorra} *)
@@ -268,33 +190,27 @@ end
 ```
 
 ```OCaml
-(** path:Types.ml *)
-
-```
-
-```OCaml
-(** path: src/functors.mli *)
-
-module VOID : sig
+(** path:Functors.mli *)
+module VOID = sig
   type t
   val mk : unit -> t
-  val kl : 
+  val ker : t -> VOID.t
 end
 
 (** A functor for constructing a 'unit' type. *)
-module UNIT : sig
+module UNIT = sig
   type t
   val mk : ?ker:VOID.t -> unit -> t
 end
 
 (** A functor for constructing a 'bool' type. *)
-module BOOL : sig
+module BOOL = sig
   type t
-  val mk : ?src:VOID.t -> ?tgt:UNIT.t -> unit -> t
+  val mk : ?source:VOID.t -> ?sink:UNIT.t -> unit -> t
 end
 
 (** A functor for constructing a 'node' type. *)
-module NODE : sig
+module NODE = sig
   type t
   val mk : ?hole:NODE.t -> ?i0:int -> ?i1:int -> ?id:string -> ?orient:BOOL.t -> unit -> t
 end
@@ -323,11 +239,6 @@ module TREE : sig
   val mk : ?nodes:NODE.t list -> ?edges:THE.t list -> ?id:string -> ?orient:BOOL.t -> unit -> t
 end
 
-(** A functor for constructing a 'graph' type. *)
-module GRAPH : sig
-  type t
-  val mk : ?edges:CIRCLE.t list -> ?nodes:DISK.t list -> ?comp:string -> ?orient:BOOL.t -> unit -> t
-end
 ```
 
 ```OCaml
